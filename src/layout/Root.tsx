@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'layout/style/root.css';
 import { CssBaseline } from '@mui/material';
+import theme from 'styles/theme';
+import { ThemeProvider } from '@mui/material/styles';
 
 initializeApp(firebaseConfig);
 
@@ -24,7 +26,7 @@ function Root() {
     }, [onAuthStateChanged, authentication]);
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
             <CssBaseline />
             <BrowserRouter>
                 <Routes>
@@ -43,7 +45,7 @@ function Root() {
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
             </BrowserRouter>
-        </>
+        </ThemeProvider>
     );
 }
 
